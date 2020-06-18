@@ -6,8 +6,8 @@ from matplotlib import cm
 
 def iter_point(c):
     z = c
-    for i in range(1, 100):  # 最多迭代100次
-        if abs(z) > 2: break  # 半径大于2则认为逃逸
+    for i in range(1, 200):  # 最多迭代100次
+        if abs(z) > 2.2: break  # 半径大于2则认为逃逸
         z = z * z + c
     return i  # 返回迭代次数
 
@@ -21,11 +21,12 @@ def draw_mandelbrot(cx, cy, d):
     c = x + y * 1j
     start = time.clock()
     mandelbrot = np.frompyfunc(iter_point, 1, 1)(c).astype(np.float)
-    print
-    "time=", time.clock() - start
+    print("time=", time.clock() - start)
     pl.imshow(mandelbrot, cmap=cm.jet, extent=[x0, x1, y0, y1])
     pl.gca().set_axis_off()
 
+
+# __main__
 
 x, y = 0.27322626, 0.595153338
 

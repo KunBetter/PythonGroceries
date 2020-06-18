@@ -54,6 +54,8 @@ def ifs(p, eq, init, n):
     return result[:, 0], result[:, 1], c
 
 
+# __main__
+
 start = time.clock()
 x, y, c = ifs([p1, p2, p3, p4], [eq1, eq2, eq3, eq4], [0, 0], 100000)
 time.clock() - start

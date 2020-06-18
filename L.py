@@ -9,12 +9,12 @@ class L_System(object):
         info = rule['S']
         for i in range(rule['iter']):
             ninfo = []
-        for c in info:
-            if c in rule:
-                ninfo.append(rule[c])
-            else:
-                ninfo.append(c)
-        info = "".join(ninfo)
+            for c in info:
+                if c in rule:
+                    ninfo.append(rule[c])
+                else:
+                    ninfo.append(c)
+            info = "".join(ninfo)
         self.rule = rule
         self.info = info
 
@@ -101,12 +101,13 @@ def draw(ax, rule, iter=None):
         ax.set_xlim(ax.dataLim.xmin, ax.dataLim.xmax)
         ax.invert_yaxis()
 
-        fig = pl.figure(figsize=(7, 4.5))
-        fig.patch.set_facecolor("papayawhip")
 
-        for i in range(6):
-            ax = fig.add_subplot(231 + i)
-            draw(ax, rules[i])
+fig = pl.figure(figsize=(7, 4.5))
+fig.patch.set_facecolor("papayawhip")
 
-        fig.subplots_adjust(left=0, right=1, bottom=0, top=1, wspace=0, hspace=0)
-        pl.show()
+for i in range(6):
+    ax = fig.add_subplot(231 + i)
+    draw(ax, rules[i])
+
+    fig.subplots_adjust(left=0, right=1, bottom=0, top=1, wspace=0, hspace=0)
+    pl.show()
